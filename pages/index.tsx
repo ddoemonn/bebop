@@ -5,6 +5,7 @@ import Layout from './layout';
 export default function Home() {
   return (
     <Layout>
+      <Navbar isActive="home" />
       <section className="flex flex-col justify-center items-center flex-1 w-1/2">
         <input
           placeholder="Search for your favorite media..."

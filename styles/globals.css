@@ -2,4 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .bg-black-to-gradient {
+    @apply bg-black transition-all duration-1000;
+  }
+  .group:hover .bg-black-to-gradient {
+    @apply bg-gradient-to-r from-indigo-500 via-sky-500 to-emerald-500;
+  }
+  .text-black-to-gradient {
+    @apply text-transparent bg-clip-text bg-black transition-all duration-500;
+  }
+  .group:hover .text-black-to-gradient {
+    @apply bg-gradient-to-r from-emerald-500 via-sky-500 to-indigo-500;
+  }
 
+}
