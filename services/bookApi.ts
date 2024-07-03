@@ -1,5 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
+import bebopConfig from '@/bebop.config';
+
 interface VolumeInfo {
   title: string;
   authors: string[];
@@ -81,7 +83,7 @@ interface BookItem {
 export const bookApi = createApi({
   reducerPath: 'bookApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://www.googleapis.com/books/v1/volumes?q=react&key=AIzaSyC4icC2-Yhg6FoRC86liXdIzBxLnIrD16M' + '&maxResults=5',
+    baseUrl: `https://www.googleapis.com/books/v1/volumes?q=react&key=${bebopConfig.bookApiKey}` + '&maxResults=5',
   }),
   endpoints: builder => ({
     getBooks: builder.query<BookVolume, void>({
