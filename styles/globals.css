@@ -15,5 +15,4 @@
   .group:hover .text-black-to-gradient {
     @apply bg-gradient-to-r from-emerald-500 via-sky-500 to-indigo-500;
   }
-
 }

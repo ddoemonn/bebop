@@ -9,7 +9,7 @@ interface NavbarProps {
 export default function Navbar({ isActive }: NavbarProps) {
   return (
     <nav className="flex p-3 w-full">
-      <ul className="flex items-center w-full gap-3 text-lg font-semibold">
+      <ul className="flex items-center w-full gap-3 text-lg font-semibold z-50">
         <li className="">
           <Link
             href="/"
