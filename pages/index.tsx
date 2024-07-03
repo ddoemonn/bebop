@@ -1,9 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import Image from 'next/image';
-
 import { Navbar } from '@/components';
-import imageSrc from '@/public/image.png';
 
 import Layout from './layout';
 
@@ -27,59 +24,35 @@ export default function Home() {
     <Layout>
       <Navbar isActive="home" />
 
-      <section className="flex flex-col justify-center items-center flex-1 w-3/5  relative">
-        <div className="relative p-24">
+      <section className="flex flex-col justify-center items-center flex-1 w-1/2 relative">
+        <div className="relative p-10">
           <div
-            className={`absolute z-0 transform transition-all duration-500 text-4xl rounded-xl ${
-              isHovered ? 'top-0 left-0 -rotate-12 opacity-100 visible' : 'top-10 left-10 rotate-0 opacity-0 invisible'
+            className={`absolute z-0 transform transition-all duration-500 text-4xl ${
+              isHovered ? 'top-0 left-0 rotate-12 opacity-100 visible' : 'top-10 left-10 rotate-0 opacity-0 invisible'
             }`}
           >
-            <Image
-              className="rounded-xl"
-              src={imageSrc}
-              alt="🎬"
-              width={150}
-              height={150}
-            />
+            🎬
           </div>
           <div
-            className={`absolute z-0 transform transition-all duration-500 text-4xl rounded-xl ${
+            className={`absolute z-0 transform transition-all duration-500 text-4xl ${
               isHovered ? 'top-0 right-0 rotate-12 opacity-100 visible' : 'top-10 right-10 rotate-0 opacity-0 invisible'
             }`}
           >
-            <Image
-              className="rounded-xl"
-              src={imageSrc}
-              alt="🎬"
-              width={150}
-              height={150}
-            />
+            📚
           </div>
           <div
-            className={`absolute z-0 transform transition-all duration-500 text-4xl rounded-xl ${
+            className={`absolute z-0 transform transition-all duration-500 text-4xl ${
               isHovered ? 'bottom-0 left-0 rotate-12 opacity-100 visible' : 'bottom-10 left-10 rotate-0 opacity-0 invisible'
             }`}
           >
-            <Image
-              className="rounded-xl"
-              src={imageSrc}
-              alt="🎬"
-              width={150}
-              height={150}
-            />
+            🎵
           </div>
           <div
-            className={`absolute z-0 transform transition-all duration-500 text-4xl rounded-xl ${
-              isHovered ? 'bottom-0 right-0 -rotate-12 opacity-100 visible' : 'bottom-10 right-10 rotate-0 opacity-0 invisible'
+            className={`absolute z-0 transform transition-all duration-500 text-4xl ${
+              isHovered ? 'bottom-0 right-0 rotate-12 opacity-100 visible' : 'bottom-10 right-10 rotate-0 opacity-0 invisible'
             }`}
           >
-            <Image
-              className="rounded-xl"
-              src={imageSrc}
-              alt="🎬"
-              width={150}
-              height={150}
-            />
+            📺
           </div>
 
           <input
