@@ -1,12 +1,24 @@
 import { useState, useEffect } from 'react';
 
 import { Navbar } from '@/components';
+import { useGetFilmsQuery, useGetPopularTVShowsQuery } from '@/services/mediaApi';
+import { useGetPosterQuery } from '@/services/posterApi';
 
 import Layout from './layout';
 
 export default function Home() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [isHovered, setIsHovered] = useState(false);
+
+  const { data } = useGetPopularTVShowsQuery({
+    page: 2,
+  });
+
+  const poster_path = data?.results[0]?.poster_path;
+
+  const { data: posterPath } = useGetPosterQuery({ poster_path: poster_path || '' });
+
+  console.log(posterPath);
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
