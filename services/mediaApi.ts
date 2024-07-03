@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import bebopConfig from '@/bebop.config';
 
-interface TVShow {
+interface Media {
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[];
@@ -19,9 +19,9 @@ interface TVShow {
   vote_count: number;
 }
 
-interface TVShowPage {
+interface MediaPage {
   page: number;
-  results: TVShow[];
+  results: Media[];
   total_pages: number;
   total_results: number;
 }
@@ -33,16 +33,16 @@ export const mediaApi = createApi({
     baseUrl: 'https://api.themoviedb.org/3',
   }),
   endpoints: builder => ({
-    getFilms: builder.query<unknown, { page: number }>({
+    getPopularMovies: builder.query<MediaPage, { page: number }>({
       query: ({ page }) => ({
-        url: '/movie/changes',
+        url: '/movie/popular',
         params: {
           api_key: bebopConfig.mediaApiKey,
           page,
         },
       }),
     }),
-    getPopularTVShows: builder.query<TVShowPage, { page: number }>({
+    getPopularTVShows: builder.query<MediaPage, { page: number }>({
       query: ({ page }) => ({
         url: '/tv/popular',
         params: {
@@ -56,4 +56,4 @@ export const mediaApi = createApi({
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetFilmsQuery, useGetPopularTVShowsQuery } = mediaApi;
+export const { useGetPopularMoviesQuery, useGetPopularTVShowsQuery } = mediaApi;
