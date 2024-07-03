@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 
+import Image from 'next/image';
+
 import { Navbar } from '@/components';
-import { useGetFilmsQuery, useGetPopularTVShowsQuery } from '@/services/mediaApi';
-import { useGetPosterQuery } from '@/services/posterApi';
+import { useGetPopularTVShowsQuery } from '@/services/mediaApi';
 
 import Layout from './layout';
 
@@ -13,12 +14,6 @@ export default function Home() {
   const { data } = useGetPopularTVShowsQuery({
     page: 2,
   });
-
-  const poster_path = data?.results[0]?.poster_path;
-
-  const { data: posterPath } = useGetPosterQuery({ poster_path: poster_path || '' });
-
-  console.log(posterPath);
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
@@ -36,41 +31,65 @@ export default function Home() {
     <Layout>
       <Navbar isActive="home" />
 
-      <section className="flex flex-col justify-center items-center flex-1 w-1/2 relative">
-        <div className="relative p-10">
-          <div
-            className={`absolute z-0 transform transition-all duration-500 text-4xl ${
-              isHovered ? 'top-0 left-0 rotate-12 opacity-100 visible' : 'top-10 left-10 rotate-0 opacity-0 invisible'
-            }`}
-          >
-            🎬
-          </div>
-          <div
-            className={`absolute z-0 transform transition-all duration-500 text-4xl ${
-              isHovered ? 'top-0 right-0 rotate-12 opacity-100 visible' : 'top-10 right-10 rotate-0 opacity-0 invisible'
-            }`}
-          >
-            📚
-          </div>
-          <div
-            className={`absolute z-0 transform transition-all duration-500 text-4xl ${
-              isHovered ? 'bottom-0 left-0 rotate-12 opacity-100 visible' : 'bottom-10 left-10 rotate-0 opacity-0 invisible'
-            }`}
-          >
-            🎵
-          </div>
-          <div
-            className={`absolute z-0 transform transition-all duration-500 text-4xl ${
-              isHovered ? 'bottom-0 right-0 rotate-12 opacity-100 visible' : 'bottom-10 right-10 rotate-0 opacity-0 invisible'
-            }`}
-          >
-            📺
-          </div>
+      <section className="flex flex-col justify-center items-center flex-1 w-full relative ">
+        <div
+          className={`absolute z-0 transform transition-all duration-500 text-4xl flex items-center justify-center ${
+            isHovered ? 'top-[20%] left-[10%] rotate-12 opacity-100 visible' : 'top-0 left-0 rotate-0 opacity-0 '
+          }`}
+        >
+          <Image
+            src={`https://image.tmdb.org/t/p/w500/${data?.results[0]?.poster_path}`}
+            alt="poster"
+            width={200}
+            height={200}
+            className="w-1/2 rounded-xl shadow-md shadow-purple-500"
+          />
+        </div>
+        <div
+          className={`absolute z-0 transform transition-all duration-500 text-4xl flex items-center justify-center ${
+            isHovered ? 'top-[20%] right-[10%] -rotate-12 opacity-100 visible' : 'top-0 right-0 rotate-0 opacity-0 '
+          }`}
+        >
+          <Image
+            src={`https://image.tmdb.org/t/p/w500/${data?.results[1]?.poster_path}`}
+            alt="poster"
+            width={200}
+            height={200}
+            className="w-1/2 rounded-xl shadow-md shadow-purple-500"
+          />
+        </div>
+        <div
+          className={`absolute z-0 transform transition-all duration-500 text-4xl flex items-center justify-center ${
+            isHovered ? 'bottom-[20%] left-[10%] -rotate-12  opacity-100 visible' : 'bottom-0 left-0 rotate-0 opacity-0'
+          }`}
+        >
+          <Image
+            src={`https://image.tmdb.org/t/p/w500/${data?.results[2]?.poster_path}`}
+            alt="poster"
+            width={200}
+            height={200}
+            className="w-1/2 rounded-xl shadow-md shadow-purple-500"
+          />
+        </div>
+        <div
+          className={`absolute z-0 transform transition-all duration-500 text-4xl flex items-center justify-center ${
+            isHovered ? 'bottom-[20%] right-[10%] rotate-12 opacity-100 visible' : 'bottom-0 right-0 rotate-0 opacity-0'
+          }`}
+        >
+          <Image
+            src={`https://image.tmdb.org/t/p/w500/${data?.results[3]?.poster_path}`}
+            alt="poster"
+            width={200}
+            height={200}
+            className="w-1/2 rounded-xl shadow-md shadow-purple-500"
+          />
+        </div>
 
+        <div className="relative flex flex-col justify-center items-center w-1/2 ">
           <input
             placeholder="Search for your favorite media..."
             type="text"
-            className="shadow-md w-full m-5 p-2 rounded-xl focus:outline-double outline-emerald-600 relative z-10"
+            className="shadow-md w-11/12 m-5 p-2 rounded-xl focus:outline-double outline-emerald-600 relative z-10"
           />
           <div className="text-2xl text-center [word-spacing:0.2rem] relative z-10">
             Dive into a world where you can rate and explore the best{' '}
