@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Navbar } from '@/components';
 import { useGetBooksQuery } from '@/services/bookApi';
 import { useGetPopularMoviesQuery, useGetPopularTVShowsQuery } from '@/services/mediaApi';
+import { useGetPlaylistQuery } from '@/services/musicApi';
 
 import Layout from './layout';
 
@@ -17,6 +18,9 @@ export default function Home() {
   const { data: popularTVShowsData } = useGetPopularTVShowsQuery({ page: 1 });
   const { data: popularMoviesData } = useGetPopularMoviesQuery({ page: 1 });
   const { data: booksData } = useGetBooksQuery();
+  const { data: musicData } = useGetPlaylistQuery();
+
+  console.log(musicData?.tracks.items[0]);
 
   const getImages = () => {
     if (hoverType === 'movie') {
@@ -25,8 +29,9 @@ export default function Home() {
       return popularTVShowsData?.results.slice(0, 4).map(show => `https://image.tmdb.org/t/p/w500/${show.poster_path}`);
     } else if (hoverType === 'book' && booksData) {
       return booksData.items.slice(0, 4).map(book => `${book.volumeInfo.imageLinks.thumbnail}&fife=w500-h750`);
+    } else {
+      return musicData?.tracks.items.slice(0, 4).map(item => item.track.album.images[0].url);
     }
-    return [];
   };
 
   useEffect(() => {
