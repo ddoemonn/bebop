@@ -1,5 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
+import bebopConfig from '@/bebop.config';
+
 interface SpotifyTrack {
   added_at: string;
   added_by: {
@@ -97,7 +99,7 @@ export const musicApi = createApi({
         url: '/playlists/2Rbyav41QxFMnEmS6pVU2X',
         method: 'GET',
         headers: {
-          Authorization: `Bearer BQCTIpx1gJWMP7c8P_asLJ2xYcvnLH15sNTCYM8oHe1t4-YdtrxOQDCKcBqn9dGGVuehQesdsjzKlfY5d3bhvBwXQu1YQNaoMkyxmHfqiRuJX1ygYnU  `,
+          Authorization: `Bearer ${bebopConfig.musicApiKey}`,
         },
       }),
     }),
