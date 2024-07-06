@@ -7,7 +7,6 @@ interface DropdownProps {
 }
 
 const Dropdown: React.FC<DropdownProps> = ({ isOpen, items }) => {
-  console.log('items', items);
   return (
     <>
       {isOpen && (
@@ -26,7 +25,7 @@ const Dropdown: React.FC<DropdownProps> = ({ isOpen, items }) => {
             >
               <a
                 href={item.href}
-                className="block px-4 py-2 text-sm"
+                className="block px-4 py-2 text-sm selection:bg-none"
                 role="menuitem"
                 tabIndex={-1}
               >

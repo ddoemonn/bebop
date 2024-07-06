@@ -18,10 +18,10 @@ const Navbar: React.FC<NavbarProps> = ({ isActive }) => {
 
   // Define dropdown items
   const dropdownItems = [
-    { label: 'Films', href: '#', hoverColor: 'indigo' },
-    { label: 'Series', href: '#', hoverColor: 'blue' },
-    { label: 'Books', href: '#', hoverColor: 'green' },
-    { label: 'Music', href: '#', hoverColor: 'red' },
+    { label: 'Films', href: '/explore/films', hoverColor: 'indigo' },
+    { label: 'Series', href: '/explore/series', hoverColor: 'blue' },
+    { label: 'Books', href: '/explore/books', hoverColor: 'green' },
+    { label: 'Music', href: '/explore/music', hoverColor: 'red' },
   ];
 
   return (
@@ -41,7 +41,7 @@ const Navbar: React.FC<NavbarProps> = ({ isActive }) => {
             <div>
               <p
                 onClick={toggleDropdown}
-                className={`cursor-pointer inline-flex hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-indigo-500 hover:to-blue-500 text-indigo-500 ${isActive === 'explore' && 'text-black'}`}
+                className={`selection:bg-none cursor-pointer inline-flex hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-indigo-500 hover:to-blue-500 text-indigo-500 ${isActive === 'explore' && '!text-black'}`}
               >
                 Explore
               </p>
@@ -56,7 +56,7 @@ const Navbar: React.FC<NavbarProps> = ({ isActive }) => {
         <li className=" text-right flex justify-end mt-1">
           <Link href="/sign-in">
             <p
-              className={`inline-flex hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-500 hover:to-emerald-500 text-blue-500 ${isActive === 'sign-in' && 'text-black'}`}
+              className={`inline-flex hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-500 hover:to-emerald-500 text-blue-500 ${isActive === 'sign-in' && '!text-black'}`}
             >
               Sign in
             </p>
@@ -65,7 +65,7 @@ const Navbar: React.FC<NavbarProps> = ({ isActive }) => {
         <li className="mt-1">
           <Link href="/sign-up">
             <p
-              className={`inline-flex hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-500 hover:to-emerald-500 text-emerald-600 ${isActive === 'sign-up' && 'text-black'}`}
+              className={`inline-flex hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-500 hover:to-emerald-500 text-emerald-600 ${isActive === 'sign-up' && '!text-black'}`}
             >
               Create account
             </p>
