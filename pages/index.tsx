@@ -13,7 +13,6 @@ export default function Home() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [isHovered, setIsHovered] = useState(false);
   const [hoverType, setHoverType] = useState<string | null>(null);
-  const [currenColor, setCurrentColor] = useState<string | null>(null);
 
   const { data: popularTVShowsData } = useGetPopularTVShowsQuery({ page: 1 });
   const { data: popularMoviesData } = useGetPopularMoviesQuery({ page: 1 });
@@ -107,7 +106,7 @@ export default function Home() {
               alt="poster"
               width={150}
               height={190}
-              className={`w-8/12 rounded-xl shadow-sm shadow-${currenColor}-500`}
+              className="w-8/12 rounded-xl shadow-md"
             />
           </div>
         ))}
@@ -125,7 +124,6 @@ export default function Home() {
               onMouseEnter={() => {
                 setHoveredIndex(0);
                 setHoverType('movie');
-                setCurrentColor('blue');
               }}
               onMouseLeave={() => setHoveredIndex(null)}
             >
@@ -137,7 +135,6 @@ export default function Home() {
               onMouseEnter={() => {
                 setHoveredIndex(1);
                 setHoverType('tvshow');
-                setCurrentColor('indigo');
               }}
               onMouseLeave={() => setHoveredIndex(null)}
             >
@@ -149,7 +146,6 @@ export default function Home() {
               onMouseEnter={() => {
                 setHoveredIndex(2);
                 setHoverType('book');
-                setCurrentColor('emerald');
               }}
               onMouseLeave={() => setHoveredIndex(null)}
             >
@@ -161,7 +157,6 @@ export default function Home() {
               onMouseEnter={() => {
                 setHoveredIndex(3);
                 setHoverType('music');
-                setCurrentColor('rose');
               }}
               onMouseLeave={() => setHoveredIndex(null)}
             >
@@ -174,8 +169,3 @@ export default function Home() {
     </Layout>
   );
 }
-
-const emerald500 = 'shadow-emerald-500';
-const blue500 = 'shadow-blue-500';
-const indigo500 = 'shadow-indigo-500';
-const rose500 = 'shadow-rose-500';
