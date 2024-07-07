@@ -48,7 +48,7 @@ export default function Home() {
   const images = getImages();
 
   return (
-    <Layout>
+    <Layout pageStyle="flex">
       <Navbar isActive="home" />
       <section className="flex flex-col justify-center items-center flex-1 w-full relative">
         <div

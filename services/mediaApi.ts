@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import bebopConfig from '@/bebop.config';
 
-interface Media {
+export interface Media {
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[];
